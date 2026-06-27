@@ -1,4 +1,19 @@
-tasks = []
+import json
+
+def save_tasks():
+    with open("tasks.json", "w") as file:
+        json.dump(tasks, file, indent=4)
+
+def load_tasks():
+    global tasks
+
+    try:
+        with open("tasks.json", "r") as file:
+            tasks = json.load(file)
+
+    except FileNotFoundError:
+      tasks = []
+load_tasks()
 
 while True:
     print("\n" + "=" * 40)
@@ -14,14 +29,18 @@ while True:
     choice = input("\nChoose an option: ")
 
     if choice == "1":
-        task = input("Enter your task: ")
+        task = input("Enter your task: ").strip()
 
-        new_task = {
-            "name": task,
-            "completed": False
-        }
+        if task=="":
+            print("\n Task cannot be empty!")
+        else:
+            new_task={
+                "name":task,
+                "completed":False
+            }
+            tasks.append(new_task)
+            save_tasks()
 
-        tasks.append(new_task)
         print("\n✅ Task added successfully!")
 
     elif choice == "2":
@@ -50,6 +69,7 @@ while True:
 
             if 1 <= delete <= len(tasks):
                 removed = tasks.pop(delete - 1)
+                save_tasks()
                 print(f"\n✅ '{removed['name']}' deleted successfully!")
 
             else:
@@ -71,6 +91,7 @@ while True:
 
             if 1 <= complete <= len(tasks):
                 tasks[complete - 1]["completed"] = True
+                save_tasks()
                 print("\n✅ Task marked as completed!")
 
             else:
