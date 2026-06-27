@@ -24,7 +24,8 @@ while True:
     print("2. View Tasks")
     print("3. Delete Task")
     print("4. Mark Task as Completed")
-    print("5. Exit")
+    print("5. Clear Completed Tasks")
+    print("6. Exit")
 
     choice = input("\nChoose an option: ")
 
@@ -98,6 +99,18 @@ while True:
                 print("\n❌ Invalid task number.")
 
     elif choice == "5":
+
+       before = len(tasks)
+
+       tasks = [task for task in tasks if not task["completed"]]
+
+       removed = before - len(tasks)
+
+       save_tasks()
+
+       print(f"\n✅ Removed {removed} completed task(s).")
+
+    elif choice == "6":
         print("\nGoodbye! 👋")
         break
 
