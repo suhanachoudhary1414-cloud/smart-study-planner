@@ -2,6 +2,19 @@ import json
 
 tasks = []
 
+def show_tasks():
+
+    if len(tasks) == 0:
+        print("\nNo tasks yet.")
+
+    else:
+        print("\nYour Tasks:")
+
+        for i, task in enumerate(tasks, start=1):
+
+            status = "✓" if task["completed"] else " "
+
+            print(f"{i}. [{status}] {task['name']}")
 
 def save_tasks():
     with open("tasks.json", "w") as file:
@@ -53,16 +66,7 @@ while True:
             print("\n✅ Task added successfully!")
 
     elif choice == "2":
-
-        print("\nYour Tasks:")
-
-        if len(tasks) == 0:
-            print("No tasks yet.")
-
-        else:
-            for i, task in enumerate(tasks, start=1):
-                status = "✓" if task["completed"] else " "
-                print(f"{i}. [{status}] {task['name']}")
+        show_tasks()
 
     elif choice == "3":
 
@@ -70,11 +74,7 @@ while True:
             print("\nNo tasks to delete.")
 
         else:
-            print("\nYour Tasks:")
-
-            for i, task in enumerate(tasks, start=1):
-                status = "✓" if task["completed"] else " "
-                print(f"{i}. [{status}] {task['name']}")
+            show_tasks()
 
             try:
                 delete = int(input("\nEnter task number to delete: "))
@@ -96,12 +96,8 @@ while True:
             print("\nNo tasks available.")
 
         else:
-            print("\nYour Tasks:")
-
-            for i, task in enumerate(tasks, start=1):
-                status = "✓" if task["completed"] else " "
-                print(f"{i}. [{status}] {task['name']}")
-
+            show_tasks()
+            
             try:
                 complete = int(input("\nEnter task number to mark as completed: "))
 
