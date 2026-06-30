@@ -47,7 +47,10 @@ py study_planner.py
 ## 📂 Project Structure
 
 ```
-smart-study-planner/
+smart-study-planner
+│
+├── images
+│      └── screenshot.png
 │
 ├── study_planner.py
 ├── tasks.json
@@ -66,6 +69,10 @@ smart-study-planner/
 - GUI version using Tkinter
 
 ---
+
+## 📷 Screenshot
+
+![Smart Study Planner](images/screenshot.png)
 
 ## 👩‍💻 Author
 
