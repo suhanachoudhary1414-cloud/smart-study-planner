@@ -16,6 +16,24 @@ def show_tasks():
 
             print(f"{i}. [{status}] {task['name']}")
 
+def add_task():
+
+    task = input("Enter your task: ").strip()
+
+    if task == "":
+        print("\n❌ Task cannot be empty!")
+
+    else:
+        new_task = {
+            "name": task,
+            "completed": False
+        }
+
+        tasks.append(new_task)
+        save_tasks()
+
+        print("\n✅ Task added successfully!")
+
 def save_tasks():
     with open("tasks.json", "w") as file:
         json.dump(tasks, file, indent=4)
@@ -49,21 +67,7 @@ while True:
     choice = input("\nChoose an option: ")
 
     if choice == "1":
-        task = input("Enter your task: ").strip()
-
-        if task == "":
-            print("\n❌ Task cannot be empty!")
-
-        else:
-            new_task = {
-                "name": task,
-                "completed": False
-            }
-
-            tasks.append(new_task)
-            save_tasks()
-
-            print("\n✅ Task added successfully!")
+        add_task()
 
     elif choice == "2":
         show_tasks()
@@ -97,7 +101,7 @@ while True:
 
         else:
             show_tasks()
-            
+
             try:
                 complete = int(input("\nEnter task number to mark as completed: "))
 

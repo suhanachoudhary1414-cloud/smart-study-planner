@@ -2,5 +2,9 @@
     {
         "name": "study javaaa",
         "completed": false
+    },
+    {
+        "name": "finish the project",
+        "completed": false
     }
 ]
