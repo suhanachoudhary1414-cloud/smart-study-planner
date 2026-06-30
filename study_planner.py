@@ -56,6 +56,28 @@ def delete_task():
         except ValueError:
             print("\n❌ Please enter a valid number.")
 
+def complete_task():
+
+    if len(tasks) == 0:
+        print("\nNo tasks available.")
+
+    else:
+        show_tasks()
+
+        try:
+            complete = int(input("\nEnter task number to mark as completed: "))
+
+            if 1 <= complete <= len(tasks):
+                tasks[complete - 1]["completed"] = True
+                save_tasks()
+                print("\n✅ Task marked as completed!")
+
+            else:
+                print("\n❌ Invalid task number.")
+
+        except ValueError:
+            print("\n❌ Please enter a valid number.")     
+
 def save_tasks():
     with open("tasks.json", "w") as file:
         json.dump(tasks, file, indent=4)
@@ -98,27 +120,9 @@ while True:
         delete_task()
 
     elif choice == "4":
+        complete_task()
 
-        if len(tasks) == 0:
-            print("\nNo tasks available.")
-
-        else:
-            show_tasks()
-
-            try:
-                complete = int(input("\nEnter task number to mark as completed: "))
-
-                if 1 <= complete <= len(tasks):
-                    tasks[complete - 1]["completed"] = True
-                    save_tasks()
-                    print("\n✅ Task marked as completed!")
-
-                else:
-                    print("\n❌ Invalid task number.")
-
-            except ValueError:
-                print("\n❌ Please enter a valid number.")
-
+           
     elif choice == "5":
 
         before = len(tasks)
