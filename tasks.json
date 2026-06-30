@@ -1,14 +1,10 @@
 [
     {
-        "name": "study javaaa",
-        "completed": false
-    },
-    {
         "name": "finish the project",
         "completed": false
     },
     {
-        "name": "be productive",
+        "name": "study and study",
         "completed": false
     }
 ]

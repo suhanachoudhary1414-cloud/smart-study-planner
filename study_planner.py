@@ -78,6 +78,18 @@ def complete_task():
         except ValueError:
             print("\n❌ Please enter a valid number.")     
 
+def clear_completed_tasks():
+
+    before = len(tasks)
+
+    tasks[:] = [task for task in tasks if not task["completed"]]
+
+    removed = before - len(tasks)
+
+    save_tasks()
+
+    print(f"\n✅ Removed {removed} completed task(s).")
+
 def save_tasks():
     with open("tasks.json", "w") as file:
         json.dump(tasks, file, indent=4)
@@ -124,16 +136,7 @@ while True:
 
            
     elif choice == "5":
-
-        before = len(tasks)
-
-        tasks = [task for task in tasks if not task["completed"]]
-
-        removed = before - len(tasks)
-
-        save_tasks()
-
-        print(f"\n✅ Removed {removed} completed task(s).")
+        clear_completed_tasks()
 
     elif choice == "6":
 
