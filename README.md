@@ -47,10 +47,11 @@ py study_planner.py
 ## 📂 Project Structure
 
 ```
-smart-study-planner
+smart-study-planner/
 │
-├── images
-│      └── screenshot.png
+├── images/
+│   ├── menu.png
+│   └── tasks.png
 │
 ├── study_planner.py
 ├── tasks.json
@@ -70,9 +71,15 @@ smart-study-planner
 
 ---
 
-## 📷 Screenshot
+## 📷 Screenshots
 
-![Smart Study Planner](images/screenshot.png)
+### Main Menu
+
+![Main Menu](images/menu.png)
+
+### Task Management
+
+![Task Management](images/tasks.png)
 
 ## 👩‍💻 Author
 
