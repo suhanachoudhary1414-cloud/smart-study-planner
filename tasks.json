@@ -6,5 +6,9 @@
     {
         "name": "finish the project",
         "completed": false
+    },
+    {
+        "name": "be productive",
+        "completed": false
     }
 ]

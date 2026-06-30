@@ -34,6 +34,28 @@ def add_task():
 
         print("\n✅ Task added successfully!")
 
+def delete_task():
+
+    if len(tasks) == 0:
+        print("\nNo tasks to delete.")
+
+    else:
+        show_tasks()
+
+        try:
+            delete = int(input("\nEnter task number to delete: "))
+
+            if 1 <= delete <= len(tasks):
+                removed = tasks.pop(delete - 1)
+                save_tasks()
+                print(f"\n✅ '{removed['name']}' deleted successfully!")
+
+            else:
+                print("\n❌ Invalid task number.")
+
+        except ValueError:
+            print("\n❌ Please enter a valid number.")
+
 def save_tasks():
     with open("tasks.json", "w") as file:
         json.dump(tasks, file, indent=4)
@@ -73,26 +95,7 @@ while True:
         show_tasks()
 
     elif choice == "3":
-
-        if len(tasks) == 0:
-            print("\nNo tasks to delete.")
-
-        else:
-            show_tasks()
-
-            try:
-                delete = int(input("\nEnter task number to delete: "))
-
-                if 1 <= delete <= len(tasks):
-                    removed = tasks.pop(delete - 1)
-                    save_tasks()
-                    print(f"\n✅ '{removed['name']}' deleted successfully!")
-
-                else:
-                    print("\n❌ Invalid task number.")
-
-            except ValueError:
-                print("\n❌ Please enter a valid number.")
+        delete_task()
 
     elif choice == "4":
 
